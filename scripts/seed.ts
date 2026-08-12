@@ -181,14 +181,13 @@ async function seedTeamMembers() {
     for (const m of members) {
       order += 1
       const existing = await db.teamMember.findFirst({
-        where: { name: m.name, position: m.position },
+        where: { name: m.name },
       })
       if (existing) {
         // Update
         await db.teamMember.update({
           where: { id: existing.id },
           data: {
-            position: m.position,
             bio: m.bio || null,
             profileImage: m.image,
             strengths: JSON.stringify(m.skills || []),
@@ -230,7 +229,6 @@ async function seedTeamMembers() {
           data: {
             userId: user.id,
             name: m.name,
-            position: m.position,
             bio: m.bio || null,
             profileImage: m.image,
             strengths: JSON.stringify(m.skills || []),
