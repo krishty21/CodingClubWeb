@@ -114,13 +114,28 @@ export async function getDomains() {
 }
 
 export async function getEvents(filter?: { status?: string; type?: string }) {
-  const where: { isActive?: boolean; status?: string; type?: string } = { isActive: true }
-  if (filter?.status && filter.status !== "all") where.status = filter.status
+  const now = new Date()
+  const where: any = { isActive: true }
+  
+  if (filter?.status && filter.status !== "all") {
+    if (filter.status === "upcoming") {
+      where.status = "upcoming"
+      where.date = { gte: now }
+    } else if (filter.status === "past") {
+      where.OR = [
+        { status: "past" },
+        { date: { lt: now } }
+      ]
+    }
+  }
+  
   if (filter?.type && filter.type !== "All") where.type = filter.type
+  
   const rows = await db.event.findMany({
     where,
     orderBy: [{ displayOrder: "asc" }, { date: "asc" }],
   })
+  
   return rows.map((r) => ({
     id: r.id,
     title: r.title,
@@ -129,7 +144,7 @@ export async function getEvents(filter?: { status?: string; type?: string }) {
     time: r.time,
     location: r.location,
     type: r.type,
-    status: r.status,
+    status: (r.status === "past" || r.date < now) ? "past" : "upcoming",
     image: r.image || "",
     registrations: r.registrations,
     maxRegistrations: r.maxRegistrations,
@@ -138,8 +153,13 @@ export async function getEvents(filter?: { status?: string; type?: string }) {
 }
 
 export async function getUpcomingEvents() {
+  const now = new Date()
   const rows = await db.event.findMany({
-    where: { isActive: true, status: "upcoming" },
+    where: { 
+      isActive: true, 
+      status: "upcoming",
+      date: { gte: now }
+    },
     orderBy: [{ displayOrder: "asc" }, { date: "asc" }],
   })
   return rows.map((r) => ({
