@@ -219,7 +219,7 @@ function EventGridCard({ event, index }: { event: EventItem; index: number }) {
           <div className="space-y-2 mb-4">
             <div className="flex items-center text-gray-300 text-sm">
               <Calendar className="h-4 w-4 mr-2 text-blue-400" />
-              {new Date(event.date).toLocaleDateString()}
+              {new Date(event.date).toLocaleDateString("en-US", { year: "numeric", month: "short", day: "numeric" })}
             </div>
             <div className="flex items-center text-gray-300 text-sm">
               <Clock className="h-4 w-4 mr-2 text-blue-400" />
@@ -312,7 +312,7 @@ function EventListCard({ event, index }: { event: EventItem; index: number }) {
           <div className="grid grid-cols-2 lg:grid-cols-4 gap-4">
             <div className="flex items-center text-gray-300 text-sm">
               <Calendar className="h-4 w-4 mr-2 text-blue-400" />
-              {new Date(event.date).toLocaleDateString()}
+              {new Date(event.date).toLocaleDateString("en-US", { year: "numeric", month: "short", day: "numeric" })}
             </div>
             <div className="flex items-center text-gray-300 text-sm">
               <Clock className="h-4 w-4 mr-2 text-blue-400" />
