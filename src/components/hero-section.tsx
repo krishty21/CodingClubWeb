@@ -99,11 +99,11 @@ export default function HeroSection({ settings, stats }: HeroSectionProps) {
           transition={{ duration: 1, ease: [0.16, 1, 0.3, 1], delay: 0.1 }}
           className="space-y-4 animate-slide-in-up"
         >
-          <h1 className="text-5xl sm:text-7xl lg:text-8xl font-bold font-heading leading-[1.05] tracking-tight">
-            <span className="block text-shimmer">
+          <h1 className="text-5xl sm:text-7xl lg:text-8xl font-bold font-heading leading-tight tracking-tight py-2">
+            <span className="block text-shimmer pb-3">
               {settings.hero_title_line_1 || "Coding Club"}
             </span>
-            <span className="block mt-2 bg-gradient-to-r from-gray-100 via-gray-300 to-gray-500 bg-clip-text text-transparent">
+            <span className="block bg-gradient-to-r from-gray-100 via-gray-300 to-gray-500 bg-clip-text text-transparent pb-3">
               {settings.hero_title_line_2 || "NIT Andhra Pradesh"}
             </span>
           </h1>

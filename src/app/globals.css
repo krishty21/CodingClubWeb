@@ -481,6 +481,7 @@
 
 html {
   scroll-behavior: smooth;
+  font-size: 103%; /* Slightly smaller, scaled down from 106% */
 }
 
 /* Premium scrollbar */
