@@ -50,6 +50,18 @@ const nextConfig = {
         protocol: "http",
         hostname: "nitandhra.ac.in",
       },
+      {
+        protocol: "https",
+        hostname: "*.supabase.co",
+      },
+      {
+        protocol: "https",
+        hostname: "www.codingclubnitanp.in",
+      },
+      {
+        protocol: "https",
+        hostname: "lh3.googleusercontent.com",
+      },
     ],
   },
 }

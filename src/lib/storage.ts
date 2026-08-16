@@ -166,7 +166,7 @@ class LocalStorageProvider implements ImageStorageProvider {
     const filename = `${Date.now()}-${random}.${ext}`
 
     const targetDir = path.join(
-      process.cwd(),
+      /* turbopackIgnore: true */ process.cwd(),
       UPLOAD_DIR.replace("./public", "public"),
       subdir,
     )

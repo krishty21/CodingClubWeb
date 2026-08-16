@@ -19,7 +19,7 @@ const manrope = Manrope({
   weight: ["400", "500", "600", "700", "800"],
 })
 
-const siteUrl = process.env.NEXTAUTH_URL || "https://codingclub.nitandhra.ac.in"
+const siteUrl = process.env.NEXTAUTH_URL || "https://www.codingclubnitanp.in"
 
 export const metadata: Metadata = {
   metadataBase: new URL(siteUrl),
