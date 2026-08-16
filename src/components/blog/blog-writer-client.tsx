@@ -2,7 +2,7 @@
 
 import { useState, useEffect, useMemo, useCallback } from "react"
 import { cn } from "@/lib/utils"
-import DOMPurify from "isomorphic-dompurify"
+import DOMPurify from "dompurify"
 import Link from "next/link"
 import { useRouter } from "next/navigation"
 import Image from "next/image"

@@ -6,7 +6,7 @@ import remarkGfm from "remark-gfm"
 import rehypeRaw from "rehype-raw"
 import rehypeHighlight from "rehype-highlight"
 import { injectHeadingIds, generateTocFromMarkdown, type TocItem } from "@/lib/blog-utils"
-import DOMPurify from "isomorphic-dompurify"
+import DOMPurify from "dompurify"
 
 interface ArticleContentProps {
   content: string

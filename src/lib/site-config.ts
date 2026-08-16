@@ -3,6 +3,28 @@ import * as LucideIcons from "lucide-react"
 import type { LucideIcon } from "lucide-react"
 
 /**
+ * Retry helper for database queries that may fail on cold start.
+ * Retries up to `maxRetries` times with exponential back-off.
+ */
+async function withRetry<T>(fn: () => Promise<T>, maxRetries = 2): Promise<T> {
+  for (let attempt = 0; attempt <= maxRetries; attempt++) {
+    try {
+      return await fn()
+    } catch (error: unknown) {
+      const isRetryable =
+        error instanceof Error &&
+        (error.message.includes("Can't reach database server") ||
+          error.message.includes("Timed out fetching a new connection") ||
+          error.message.includes("Connection refused"))
+      if (!isRetryable || attempt === maxRetries) throw error
+      // Wait 500ms, 1000ms before retrying
+      await new Promise((r) => setTimeout(r, 500 * (attempt + 1)))
+    }
+  }
+  throw new Error("withRetry: unreachable")
+}
+
+/**
  * Cache for site settings (avoids hitting DB on every component render).
  * TTL: 30 seconds in dev, 5 minutes in production.
  */
@@ -18,7 +40,7 @@ export async function getSiteSettings(): Promise<Record<string, string>> {
   if (settingsCache && now - settingsCacheTime < TTL) {
     return settingsCache
   }
-  const rows = await db.siteSetting.findMany()
+  const rows = await withRetry(() => db.siteSetting.findMany())
   const map: Record<string, string> = {}
   for (const row of rows) map[row.key] = row.value
   settingsCache = map

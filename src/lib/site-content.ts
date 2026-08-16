@@ -131,7 +131,7 @@ export const SITE_SETTINGS: Record<string, string> = {
 export const HERO_STATS = [
   {
     iconName: "Users",
-    value: "50+",
+    value: "30+",
     label: "Active Members",
     description: "Growing community",
     gradient: "from-blue-500 to-blue-600",
@@ -139,7 +139,7 @@ export const HERO_STATS = [
   },
   {
     iconName: "Calendar",
-    value: "0+",
+    value: "4+",
     label: "Events Hosted",
     description: "This academic year",
     gradient: "from-purple-500 to-purple-600",

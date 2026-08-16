@@ -1,7 +1,7 @@
 "use client"
 
 import { useEditor, EditorContent, type Editor } from "@tiptap/react"
-import DOMPurify from "isomorphic-dompurify"
+import DOMPurify from "dompurify"
 import StarterKit from "@tiptap/starter-kit"
 import { Link } from "@tiptap/extension-link"
 import { Image } from "@tiptap/extension-image"
