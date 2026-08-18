@@ -4,7 +4,7 @@ import BlogClient from "./blog-client"
 import { Suspense } from "react"
 import BlogLoading from "./loading"
 
-export const dynamic = "force-dynamic"
+export const revalidate = 300 // 5 mins
 
 export const metadata = {
   title: "Blog — Coding Club NIT Andhra Pradesh",

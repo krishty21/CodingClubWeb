@@ -12,7 +12,7 @@ import {
   getUpcomingEvents,
 } from "@/lib/site-config"
 
-export const dynamic = "force-dynamic"
+export const revalidate = 3600 // 1 hour
 
 export default async function HomePage() {
   const [settings, stats, pillars, domains, upcomingEvents] = await Promise.all([

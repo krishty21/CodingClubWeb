@@ -19,7 +19,7 @@ export const metadata: Metadata = {
   },
 }
 
-export const dynamic = "force-dynamic"
+export const revalidate = 86400 // 1 day
 
 // Mirrors the MemberGrid's TeamMemberData interface.
 // `position` is intentionally omitted — we display `category` under the name instead.

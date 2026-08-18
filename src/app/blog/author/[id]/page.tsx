@@ -8,7 +8,7 @@ import PremiumPageBackground from "@/components/premium-page-background"
 import AuthorCard from "@/components/blog/author-card"
 import type { Metadata } from "next"
 
-export const dynamic = "force-dynamic"
+export const revalidate = 300 // 5 mins
 
 interface PageProps {
   params: Promise<{ id: string }>

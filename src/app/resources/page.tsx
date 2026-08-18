@@ -8,7 +8,7 @@ export const metadata: Metadata = {
     "Curated learning roadmaps, development toolkits, club projects, and curated links to accelerate your coding journey.",
 }
 
-export const dynamic = "force-dynamic"
+export const revalidate = 3600 // 1 hour
 
 export default async function ResourcesPage() {
   const [settings, allItems] = await Promise.all([getSiteSettings(), getResourceItems()])

@@ -12,7 +12,7 @@ import AuthorCard from "@/components/blog/author-card"
 import { generateToc, type TocItem } from "@/lib/blog-utils"
 import type { Metadata } from "next"
 
-export const dynamic = "force-dynamic"
+export const revalidate = 300 // 5 mins
 
 interface PageProps {
   params: Promise<{ slug: string }>
